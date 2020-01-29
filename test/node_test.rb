@@ -15,4 +15,10 @@ class NodeTest < Minitest::Test
     assert_equal ({"Seven"=>89}), node.movie
   end
 
+  def test_it_can_store_a_key_value
+    node = Node.new(89, "Seven")
+
+    assert_equal 89, node.key
+  end 
+
 end
