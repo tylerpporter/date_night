@@ -1,4 +1,5 @@
 class Node
+attr_reader :key, :left, :right, :movie
 
   def initialize(score, title)
     @movie = {title => score}
