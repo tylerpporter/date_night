@@ -19,6 +19,13 @@ class NodeTest < Minitest::Test
     node = Node.new(89, "Seven")
 
     assert_equal 89, node.key
-  end 
+  end
+
+  def test_it_can_store_left_and_right_objects
+    node = Node.new(89, "Seven")
+
+    assert_nil node.left
+    assert_nil node.right
+  end
 
 end
