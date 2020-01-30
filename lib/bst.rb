@@ -16,8 +16,14 @@ class BinarySearchTree
     end
   end
 
-  def include?(score)
-
+  def include?(score, node =  @root)
+    if score < node.key
+      include?(score, node.left)
+    elsif score > node.key
+      include?(score, node.right)
+    else
+      node.key == score 
+    end
   end
 
 end
