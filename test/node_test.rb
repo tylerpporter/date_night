@@ -3,6 +3,7 @@ require 'minitest/pride'
 require './lib/node.rb'
 
 class NodeTest < Minitest::Test
+
   def setup
     @node = Node.new(89, "Seven", -1)
   end
