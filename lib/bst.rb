@@ -34,7 +34,17 @@ class BinarySearchTree
     else
       node.depth
     end
-  end 
+  end
+
+  def max(node = @root)
+    node = node.right
+    if node.right != nil
+      max(node)
+    else
+      node.movie
+    end 
+  end
+
 
 
 end
