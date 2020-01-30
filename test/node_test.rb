@@ -3,29 +3,48 @@ require 'minitest/pride'
 require './lib/node.rb'
 
 class NodeTest < Minitest::Test
-  def test_it_exists
-    node = Node.new(89, "Seven")
+  def setup
+    @node = Node.new(89, "Seven", -1)
+  end
 
-    assert_instance_of Node, node
+  def test_it_exists
+    assert_instance_of Node, @node
   end
 
   def test_it_stores_movie_data
-    node = Node.new(89, "Seven")
-
-    assert_equal ({"Seven"=>89}), node.movie
+    assert_equal ({"Seven"=>89}), @node.movie
   end
 
   def test_it_can_store_a_key_value
-    node = Node.new(89, "Seven")
-
-    assert_equal 89, node.key
+    assert_equal 89, @node.key
   end
 
   def test_it_can_store_left_and_right_objects
-    node = Node.new(89, "Seven")
+    assert_nil @node.left
+    assert_nil @node.right
+  end
 
-    assert_nil node.left
-    assert_nil node.right
+  def test_node_insert_assigns_node_to_correct_arm
+    @node.insert_node(92, "Fight Club")
+    @node.insert_node(85, "Burn After Reading")
+
+    assert_equal ({"Fight Club" => 92}), @node.right.movie
+    assert_equal ({"Burn After Reading" => 85}), @node.left.movie
+  end
+
+  def test_it_keeps_building_the_tree
+    @node.insert_node(16, "Johnny English")
+    @node.insert_node(92, "Sharknado 3")
+    @node.insert_node(50, "Hannibal Buress")
+
+    assert_equal ({"Hannibal Buress" => 50}), @node.left.right.movie
+  end
+
+  def test_it_knows_and_returns_its_depth
+    @node.insert_node(16, "Johnny English")
+    @node.insert_node(92, "Sharknado 3")
+    @node.insert_node(50, "Hannibal Buress")
+    assert_equal 2, @node.left.right.depth
   end
 
 end
