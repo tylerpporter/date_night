@@ -44,7 +44,9 @@ class NodeTest < Minitest::Test
     @node.insert_node(16, "Johnny English")
     @node.insert_node(92, "Sharknado 3")
     @node.insert_node(50, "Hannibal Buress")
+
     assert_equal 2, @node.left.right.depth
+    assert_equal 2, @node.insert_node(5, "Cats")
   end
 
 end
