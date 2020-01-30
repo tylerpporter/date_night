@@ -10,10 +10,14 @@ class BinarySearchTree
   def insert(score, title)
     if @root.nil?
       @root = Node.new(score, title, -1)
-      @root.depth 
+      @root.depth
     else
       @root.insert_node(score, title)
     end
+  end
+
+  def include?(score)
+
   end
 
 end
