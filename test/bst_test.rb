@@ -35,6 +35,7 @@ class BinarySearchTreeTest < Minitest::Test
     @tree.insert(50, "Hannibal Buress: Animal Furnace")
 
     assert_equal true, @tree.include?(16)
+    assert_equal false, @tree.include?(45)
   end
 
   def test_it_can_return_the_depth_of_a_given_node
