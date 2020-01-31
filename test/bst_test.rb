@@ -45,6 +45,7 @@ class BinarySearchTreeTest < Minitest::Test
     @tree.insert(50, "Hannibal Buress: Animal Furnace")
 
     assert_equal 2, @tree.depth_of(50)
+    assert_nil @tree.depth_of(42)
   end
 
   def test_it_can_return_the_movie_with_max_score
