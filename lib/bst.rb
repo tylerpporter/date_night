@@ -1,10 +1,11 @@
 require_relative 'node.rb'
 
 class BinarySearchTree
-  attr_reader :root
+  attr_reader :root, :in_order_traversal
 
   def initialize
     @root = nil
+    @in_order_traversal = []
   end
 
   def insert(score, title)
@@ -56,12 +57,11 @@ class BinarySearchTree
     end
   end
 
-  def sort(node = @root, sorted = [])
-    return if node.nil?
-    sorted << sort(node.left)
-    sorted << node.movie
-    sorted << sort(node.right)
-    sorted.compact
+  def sort(node = @root)
+    sort(node.left) unless node.left.nil?
+    @in_order_traversal << node.movie
+    sort(node.right) unless node.right.nil?
+    @in_order_traversal
   end
 
 end
