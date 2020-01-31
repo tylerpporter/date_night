@@ -17,7 +17,7 @@ class BinarySearchTree
   end
 
   def include?(score, node = @root)
-    return false if node == nil
+    return false if node.nil?
     if score < node.key
       include?(score, node.left)
     elsif score > node.key
@@ -28,7 +28,7 @@ class BinarySearchTree
   end
 
   def depth_of(score, node = @root)
-    return nil if node == nil 
+    return if node.nil?
     if score < node.key
       depth_of(score, node.left)
     elsif score > node.key
@@ -54,6 +54,14 @@ class BinarySearchTree
     else
       node.movie
     end
+  end
+
+  def sort(node = @root, sorted = [])
+    return if node.nil?
+    sorted << sort(node.left)
+    sorted << node.movie
+    sorted << sort(node.right)
+    sorted.compact
   end
 
 end
