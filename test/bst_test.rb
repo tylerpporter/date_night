@@ -56,4 +56,14 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal ({"Seven"=>93}), @tree.max
   end
 
+  def test_it_can_return_the_movie_with_min_score
+
+    @tree.insert(61, "Bill & Ted's Excellent Adventure")
+    @tree.insert(16, "Johnny English")
+    @tree.insert(92, "Sharknado 3")
+    @tree.insert(50, "Hannibal Buress: Animal Furnace")
+    @tree.insert(14, "Cats")
+
+    assert_equal ({"Cats"=>14}), @tree.min
+  end
 end

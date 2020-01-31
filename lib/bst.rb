@@ -42,9 +42,16 @@ class BinarySearchTree
       max(node)
     else
       node.movie
-    end 
+    end
   end
 
-
+  def min(node = @root)
+    node = node.left
+    if node.left != nil
+      min(node)
+    else
+      node.movie
+    end
+  end
 
 end
