@@ -71,4 +71,18 @@ class BinarySearchTree
     movie_storage.size
   end
 
+  def health(depth)
+    health_stats = []
+    if @root.depth == depth
+      # child_nodes is just place holder code for now
+      child_nodes = self.sort.size
+      total_nodes = @in_order_traversal.size
+      depth_stats = [@root.key, child_nodes, ((child_nodes / total_nodes) * 100)]
+      health_stats << depth_stats
+    else
+      nil
+    end
+    health_stats
+  end
+
 end
