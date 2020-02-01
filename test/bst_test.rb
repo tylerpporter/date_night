@@ -83,4 +83,5 @@ class BinarySearchTreeTest < Minitest::Test
 
     assert_equal 99, @tree.load('./lib/movies.txt')
   end
+
 end

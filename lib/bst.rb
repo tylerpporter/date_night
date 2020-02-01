@@ -10,10 +10,10 @@ class BinarySearchTree
 
   def insert(score, title)
     if @root.nil?
-      @root = Node.new(score, title, -1)
+      @root = Node.new(score.to_i, title, -1)
       @root.depth
     else
-      @root.insert_node(score, title)
+      @root.insert_node(score.to_i, title)
     end
   end
 
@@ -68,7 +68,7 @@ class BinarySearchTree
     movie_storage = []
     File.open(filename).each {|line| movie_storage << line.chomp().split(',')}
     movie_storage.each {|movie| self.insert(movie[0], movie[1])}
-    movie_storage.size 
+    movie_storage.size
   end
 
 end
