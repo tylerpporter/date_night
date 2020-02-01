@@ -64,4 +64,11 @@ class BinarySearchTree
     @in_order_traversal
   end
 
+  def load(filename)
+    movie_storage = []
+    File.open(filename).each {|line| movie_storage << line.chomp().split(',')}
+    movie_storage.each {|movie| self.insert(movie[0], movie[1])}
+    movie_storage.size 
+  end
+
 end

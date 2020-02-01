@@ -78,4 +78,9 @@ class BinarySearchTreeTest < Minitest::Test
 
     assert_equal sorted, @tree.sort
   end
+
+  def test_it_can_use_file_data_to_add_nodes
+
+    assert_equal 99, @tree.load('./lib/movies.txt')
+  end
 end
