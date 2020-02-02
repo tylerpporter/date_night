@@ -1,5 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
+require_relative 'test_helper.rb'
 require './lib/node.rb'
 
 class NodeTest < Minitest::Test
@@ -37,8 +36,10 @@ class NodeTest < Minitest::Test
     @node.insert_node(16, "Johnny English")
     @node.insert_node(92, "Sharknado 3")
     @node.insert_node(50, "Hannibal Buress")
+    @node.insert_node(95, "Burn After Reading")
 
     assert_equal ({"Hannibal Buress" => 50}), @node.left.right.movie
+    assert_equal ({"Burn After Reading" => 95}), @node.right.right.movie
   end
 
   def test_it_knows_and_returns_its_depth
