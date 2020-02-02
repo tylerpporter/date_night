@@ -76,7 +76,7 @@ class BinarySearchTree
   end
 
   def health(depth, node = @root)
-    @health_stats = [] if depth > node.depth
+    @health_stats = [] if node == @root 
     if depth != node.depth
       health(depth, node.left) unless node.left.nil?
       health(depth, node.right) unless node.right.nil?
