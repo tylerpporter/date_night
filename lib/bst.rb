@@ -16,8 +16,4 @@ class BinarySearchTree
     end
   end
 
-  def include?(score)
-
-  end
-
 end
