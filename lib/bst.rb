@@ -1,11 +1,13 @@
 require_relative 'node.rb'
 
 class BinarySearchTree
-  attr_reader :root, :in_order_traversal
+  attr_reader :root, :in_order_traversal, :health_stats, :total_nodes
 
   def initialize
     @root = nil
     @in_order_traversal = []
+    @health_stats = []
+    @total_nodes = 1
   end
 
   def insert(score, title)
@@ -14,6 +16,7 @@ class BinarySearchTree
       @root.depth
     else
       @root.insert_node(score.to_i, title)
+      @total_nodes += 1
     end
   end
 
@@ -71,18 +74,19 @@ class BinarySearchTree
     movie_storage.size
   end
 
-  def health(depth)
-    health_stats = []
-    if @root.depth == depth
-      # child_nodes is just place holder code for now
-      child_nodes = self.sort.size
-      total_nodes = @in_order_traversal.size
-      depth_stats = [@root.key, child_nodes, ((child_nodes / total_nodes) * 100)]
-      health_stats << depth_stats
+  def health(depth, node = @root)
+    @health_stats = [] if depth > node.depth 
+    if depth != node.depth
+      health(depth, node.left) unless node.left.nil?
+      health(depth, node.right) unless node.right.nil?
     else
-      nil
+      child_nodes = sort(node).size.to_f
+      percent = ((child_nodes / @total_nodes) * 100).to_i
+      depth_stats = [node.key, child_nodes.to_i, percent]
+      @health_stats << depth_stats
+      @in_order_traversal = []
     end
-    health_stats
+    @health_stats
   end
 
 end
