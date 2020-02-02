@@ -75,26 +75,16 @@ class BinarySearchTree
   end
 
   def health(depth, node = @root)
-  #   #starter code to return desired result for depth of 0, root node
-  #   # health_stats = []
-  #   # if node.depth == depth
-  #   #   child_nodes = self.sort.size
-  #   #   total_nodes = @in_order_traversal.size
-  #   #   depth_stats = [node.key, child_nodes, ((child_nodes / total_nodes) * 100)]
-  #   #   health_stats << depth_stats
-  #   # else
-  #   #   nil
-  #   # end
-  #   # health_stats
+    @health_stats = [] if depth > node.depth 
     if depth != node.depth
       health(depth, node.left) unless node.left.nil?
-
+      health(depth, node.right) unless node.right.nil?
     else
       child_nodes = sort(node).size.to_f
       percent = ((child_nodes / @total_nodes) * 100).to_i
-      depth_stats = [node.key, child_nodes, percent]
+      depth_stats = [node.key, child_nodes.to_i, percent]
       @health_stats << depth_stats
-    
+      @in_order_traversal = []
     end
     @health_stats
   end
