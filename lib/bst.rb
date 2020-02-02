@@ -105,4 +105,5 @@ class BinarySearchTree
     deepest_node = @leaves.max_by {|node| node.depth}
     deepest_node.depth
    end
+
 end
