@@ -15,5 +15,6 @@ class BinarySearchTree
       @root.insert_node(score, title)
     end
   end
+  
 
 end
