@@ -1,7 +1,7 @@
 require_relative 'node.rb'
 
 class BinarySearchTree
-  attr_reader :root, :in_order_traversal, :health_stats, :total_nodes
+  attr_reader :root, :in_order_traversal, :health_stats, :total_nodes, :leaves
 
   def initialize
     @root = nil
@@ -76,7 +76,7 @@ class BinarySearchTree
   end
 
   def health(depth, node = @root)
-    @health_stats = [] if depth > node.depth
+    @health_stats = [] if node == @root
     if depth != node.depth
       health(depth, node.left) unless node.left.nil?
       health(depth, node.right) unless node.right.nil?
@@ -100,4 +100,9 @@ class BinarySearchTree
     @leaves.size
   end
 
+  def height(node = @root)
+    leaves()
+    deepest_node = @leaves.max_by {|node| node.depth}
+    deepest_node.depth
+   end
 end
