@@ -8,6 +8,7 @@ class BinarySearchTree
     @in_order_traversal = []
     @health_stats = []
     @total_nodes = 1
+    @leaves = []
   end
 
   def insert(score, title)
@@ -75,7 +76,7 @@ class BinarySearchTree
   end
 
   def health(depth, node = @root)
-    @health_stats = [] if depth > node.depth 
+    @health_stats = [] if depth > node.depth
     if depth != node.depth
       health(depth, node.left) unless node.left.nil?
       health(depth, node.right) unless node.right.nil?
@@ -87,6 +88,16 @@ class BinarySearchTree
       @in_order_traversal = []
     end
     @health_stats
+  end
+
+  def leaves(node = @root)
+    if node.left.nil? && node.right.nil?
+      @leaves << node
+    else
+      leaves(node.left) unless node.left.nil?
+      leaves(node.right)unless node.right.nil?
+    end
+    @leaves.size
   end
 
 end
