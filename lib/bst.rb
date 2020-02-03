@@ -19,6 +19,7 @@ class BinarySearchTree
       @root.insert_node(score.to_i, title)
       @total_nodes += 1
     end
+    depth_of(score)
   end
 
   def include?(score, node = @root)
@@ -71,7 +72,7 @@ class BinarySearchTree
   def load(filename)
     movie_storage = []
     File.open(filename).each {|line| movie_storage << line.chomp().split(',')}
-    movie_storage.each {|movie| self.insert(movie[0], movie[1])}
+    movie_storage.each {|movie| self.insert(movie[0].to_i, movie[1])}
     movie_storage.size
   end
 
